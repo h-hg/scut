@@ -1,3 +1,6 @@
+这是一个改编原有仓库的代码库
+下面为原来的README文件
+——————————————————
 Coupon exchange project on LinuxONE
 
 # It's a demo of academic project, airline coupon exhange platform based on hyperledger fabric.
