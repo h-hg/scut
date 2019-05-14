@@ -21,7 +21,12 @@
  * The sample smart contract for documentation topic:
  * Writing Your First Blockchain Application
  */
+/*
+by h-hg
+中英文：
+	smart contract 智能合约
 
+*/
 package main
 
 /* Imports
@@ -29,10 +34,10 @@ package main
  * 2 specific Hyperledger Fabric specific libraries for Smart Contracts
  */
 import (
-	"bytes"
+	"bytes"//提供一些对byte的切片函数
 	"encoding/json"
-	"fmt"
-	"strconv"
+	"fmt"//标准输出输入
+	"strconv"//字符串与基本数据类型的转换
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	sc "github.com/hyperledger/fabric/protos/peer"
