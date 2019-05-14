@@ -62,14 +62,27 @@ import (
 )
 //Chaincode定义：Chaincode是一段由Go语言编写（支持其他编程语言，如Java），并能实现预定义接口的程序。Chaincode运行在一个受保护的Docker容器当中，与背书节点的运行互相隔离。Chaincode可通过应用提交的交易对账本状态初始化并进行管理。
 // SimpleChaincode example simple Chaincode implementation
+/*
+每一个基于fabric的区块链都需要定义这个结构体
+SimpleChaincode的个函数
+	Init
+	Invoke 调用了 invoke， delete， query
+*/
 type SimpleChaincode struct {
 }
 
+/*
+参数 stub shim.ChaincodeStubInterface提供业务逻辑的方法
+*/
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("ex02 Init")
+	/*
+	GetFunctionAndParameters()函数返回两部分第一部分是函数，第二部分是参数
+	_变量代表方法名，args是接受的参数
+	*/
 	_, args := stub.GetFunctionAndParameters()
-	var AC, CA,EA,NA,SA,SHA,SIA,WA,XA string    // Entities
-	var ACval, CAval,EAval,NAval,SAval,SHAval,SIAval,WAval,XAval int // Asset holdings
+	var AC, CA,EA,NA,SA,SHA,SIA,WA,XA string    // 9 Entities
+	var ACval, CAval,EAval,NAval,SAval,SHAval,SIAval,WAval,XAval int // 9 Asset holdings
 	var err error
 
 	//if len(args) != 18 {
@@ -172,6 +185,9 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("ex02 Invoke")
 	function, args := stub.GetFunctionAndParameters()
+	/*
+	调用自定义的函数部分
+	*/
 	if function == "invoke" {
 		// Make payment of X units from A to B
 		return t.invoke(stub, args)
@@ -186,6 +202,14 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	return shim.Error("Invalid invoke function name. Expecting \"invoke\" \"delete\" \"query\"")
 }
 
+/*
+	这个函数应该是实现了积分转换并且写入了账本
+	一下的函数都有这些：
+	GetState
+	PutState
+	DelState
+	初步理解是对数据的获取，添加和删除
+*/
 // Transaction makes payment of X units from A to B
 func (t *SimpleChaincode) invoke(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var A, B string    // Entities
@@ -293,6 +317,7 @@ func (t *SimpleChaincode) query(stub shim.ChaincodeStubInterface, args []string)
 	return shim.Success(Avalbytes)
 }
 
+//用以启动区块链
 func main() {
 	err := shim.Start(new(SimpleChaincode))
 	if err != nil {
