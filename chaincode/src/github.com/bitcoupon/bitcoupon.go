@@ -22,23 +22,67 @@ package main
 //chaincode_example05 show's how chaincode ID can be passed in as a parameter instead of
 //hard-coding.
 
+/*
+by h-hg
+主要内容：
+	定义了一个类型为SimpChaincode的struct，并为它实现了Init, Invoke, invoke, delete, query的方法
+Golang 语法
+	1.struct中的方法的实现:func (struct_name_variable struct_name) method_namen() [return_type] {}
+	2._的用处：(1)在接受返回值表示忽略这个返回值
+	3. nil 类似C++ nullptr
+一些官方文档的函数调用解释：
+	shim.ChaincodeStubInterface： https://github.com/hyperledger/fabric/blob/release-1.4/core/chaincode/shim/interfaces.go
+	1. PutState(key string, value []byte) error
+		// PutState puts the specified `key` and `value` into the transaction's
+		// writeset as a data-write proposal. PutState doesn't effect the ledger
+		// until the transaction is validated and successfully committed.
+		// Simple keys must not be an empty string and must not start with null
+		// character (0x00), in order to avoid range query collisions with
+		// composite keys, which internally get prefixed with 0x00 as composite
+		// key namespace.
+	2. GetFunctionAndParameters() (string, []string)
+		// GetFunctionAndParameters returns the first argument as the function
+		// name and the rest of the arguments as parameters in a string array.
+		// Only use GetFunctionAndParameters if the client passes arguments intended
+		// to be used as strings.
+	3.GetState(key string) ([]byte, error)
+		// GetState returns the value of the specified `key` from the
+		// ledger. Note that GetState doesn't read data from the writeset, which
+		// has not been committed to the ledger. In other words, GetState doesn't
+		// consider data modified by PutState that has not been committed.
+		// If the key does not exist in the state database, (nil, nil) is returned.
+
+*/
 import (
-	"fmt"
-	"strconv"
+	"fmt"//标准的输出输入
+	"strconv"//实现基本的数据类型与string类型的转换
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
 )
-
+//Chaincode定义：Chaincode是一段由Go语言编写（支持其他编程语言，如Java），并能实现预定义接口的程序。Chaincode运行在一个受保护的Docker容器当中，与背书节点的运行互相隔离。Chaincode可通过应用提交的交易对账本状态初始化并进行管理。
 // SimpleChaincode example simple Chaincode implementation
+/*
+每一个基于fabric的区块链都需要定义这个结构体
+SimpleChaincode的个函数
+	Init
+	Invoke 调用了 invoke， delete， query
+*/
 type SimpleChaincode struct {
 }
 
+/*
+参数 stub shim.ChaincodeStubInterface提供业务逻辑的方法
+*/
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("ex02 Init")
+	/*
+	GetFunctionAndParameters()函数返回两部分第一部分是函数，第二部分是参数
+	_变量代表方法名，args是接受的参数
+	*/
 	_, args := stub.GetFunctionAndParameters()
-	var AC, CA,EA,NA,SA,SHA,SIA,WA,XA string    // Entities
-	var ACval, CAval,EAval,NAval,SAval,SHAval,SIAval,WAval,XAval int // Asset holdings
+	var AC, CA,EA,NA,SA,SHA,SIA,WA,XA string    // 9 Entities
+	var ACval, CAval,EAval,NAval,SAval,SHAval,SIAval,WAval,XAval int // 9 Asset holdings
 	var err error
 
 	//if len(args) != 18 {
@@ -141,6 +185,9 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("ex02 Invoke")
 	function, args := stub.GetFunctionAndParameters()
+	/*
+	调用自定义的函数部分
+	*/
 	if function == "invoke" {
 		// Make payment of X units from A to B
 		return t.invoke(stub, args)
@@ -155,6 +202,14 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	return shim.Error("Invalid invoke function name. Expecting \"invoke\" \"delete\" \"query\"")
 }
 
+/*
+	这个函数应该是实现了积分转换并且写入了账本
+	一下的函数都有这些：
+	GetState
+	PutState
+	DelState
+	初步理解是对数据的获取，添加和删除
+*/
 // Transaction makes payment of X units from A to B
 func (t *SimpleChaincode) invoke(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var A, B string    // Entities
@@ -248,7 +303,7 @@ func (t *SimpleChaincode) query(stub shim.ChaincodeStubInterface, args []string)
 	// Get the state from the ledger
 	Avalbytes, err := stub.GetState(A)
 	if err != nil {
-		jsonResp := "{\"Error\":\"Failed to get state for " + A + "\"}"
+		jsonResp := "{\"Error\":\"Failed to get state for " + A + "\"}"//使用了自动推到，类型为string
 		return shim.Error(jsonResp)
 	}
 
@@ -262,6 +317,7 @@ func (t *SimpleChaincode) query(stub shim.ChaincodeStubInterface, args []string)
 	return shim.Success(Avalbytes)
 }
 
+//用以启动区块链
 func main() {
 	err := shim.Start(new(SimpleChaincode))
 	if err != nil {

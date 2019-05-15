@@ -21,7 +21,12 @@
  * The sample smart contract for documentation topic:
  * Writing Your First Blockchain Application
  */
+/*
+by h-hg
+中英文：
+	smart contract 智能合约
 
+*/
 package main
 
 /* Imports
@@ -29,10 +34,10 @@ package main
  * 2 specific Hyperledger Fabric specific libraries for Smart Contracts
  */
 import (
-	"bytes"
+	"bytes"//提供一些对byte的切片函数
 	"encoding/json"
-	"fmt"
-	"strconv"
+	"fmt"//标准输出输入
+	"strconv"//字符串与基本数据类型的转换
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	sc "github.com/hyperledger/fabric/protos/peer"
@@ -109,8 +114,8 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 	i := 0
 	for i < len(cars) {
 		fmt.Println("i is ", i)
-		carAsBytes, _ := json.Marshal(cars[i])
-		APIstub.PutState("CAR"+strconv.Itoa(i), carAsBytes)
+		carAsBytes, _ := json.Marshal(cars[i])//func Marshal(v interface{}) ([]byte, error)，返回car[i]的json编码
+		APIstub.PutState("CAR"+strconv.Itoa(i), carAsBytes)//Itoa:int -> string
 		fmt.Println("Added", cars[i])
 		i = i + 1
 	}
@@ -141,7 +146,7 @@ func (s *SmartContract) queryAllCars(APIstub shim.ChaincodeStubInterface) sc.Res
 	if err != nil {
 		return shim.Error(err.Error())
 	}
-	defer resultsIterator.Close()
+	defer resultsIterator.Close()//defer指定的函数会在函数返回前辈调用，此处用于资源的释放
 
 	// buffer is a JSON array containing QueryResults
 	var buffer bytes.Buffer
@@ -184,7 +189,7 @@ func (s *SmartContract) changeCarOwner(APIstub shim.ChaincodeStubInterface, args
 	carAsBytes, _ := APIstub.GetState(args[0])
 	car := Car{}
 
-	json.Unmarshal(carAsBytes, &car)
+	json.Unmarshal(carAsBytes, &car)//func Unmarshal(data []byte, v interface{}) error，解析data的数据，并储存在v中
 	car.Owner = args[1]
 
 	carAsBytes, _ = json.Marshal(car)
