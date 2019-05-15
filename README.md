@@ -20,4 +20,5 @@ Once you log in Community Cloud vm, following the steps below:
 
 4 get the web app in Browser by XXX.XXX.XXX.XXX:8080/bonusPointsExchange/, for example: http://148.100.245.73:8080/bonusPointsExchange,
 
+5.new
 
