@@ -50,18 +50,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="ad"> <img src="images/ad3.jpg" alt="Advertisement"/> </div>
     </div>
     <div class="span4">
-      <form class="login-form" action="/bonusPointsExchange/ShopLoginServlet" method="post" onsubmit="return checkForm();">
+				<form name="form_login" class="form-signin normal-font" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
+					<h2 class="form-signin-heading">Please sign in</h2><br/><br/>
+					<label for="inputEmail" class="sr-only">Account: </label>
+					<input input name="userName" type="text" id="userName" maxlength="20" class="form-control" placeholder="User Name" required autofocus>
+					<br/>
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input input name="password" type="password" id="password" maxlength="20" class="form-control" placeholder="Password" required>
+					<br/>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					<br/>
+					<br/>
         <table cellspacing="2">
           <tr>
-            <td style="text-indent:1em;">Account:</td>
-            <td><input name="userName" type="text" id="userName" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td style="text-indent:1em;">Password:</td>
-            <td><input name="password" type="password" id="password" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
+            <td class="mid"><input name="submit" type="submit" clafss="submitBtn" id="submit" value="Submit"></td>
             <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
           </tr>
         </table>

@@ -74,25 +74,7 @@ function checkForm() {
   <%@ include file="header.jsp" %>
   <br/>
   <br/>
-<!--
-<div class="header">
-  <div class="span1">
-    <div class="logo"> <img src="images/logo.png" alt="Bonus exchange platform"/> </div>
-  </div>
-  <div class="span2">
-    <div class="mainNav">
-      <ul>
-        <li><a href="index.jsp"> Homepage</a></li>
-        <li><a href="reference.jsp"> Reference price</a></li>
-        <li><a href="/bonusPointsExchange/QueryLatestOrder">Newly released</a></li>
-        <li><a href="/bonusPointsExchange/actionServlet?actionCode=bindShop&methodCode=find_bindedShops">Initiate deal</a></li>
-        <li><a href=#>My account</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
--->
-<!--这是main_page-->
+
   <div class="login-frame">
     <div>
       <p class="title">&nbsp;&nbsp;Login as User&nbsp;&nbsp;<span class="title1">USER LOGIN</span><span class="title1 right"><a href="login_shop.jsp">Login as Merchant</a>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
@@ -101,27 +83,32 @@ function checkForm() {
       <div class="ad"> <img src="images/ad3.jpg" alt="Advertisement"/> </div>
     </div>
     <div class="span4">
-      <form name="form_login" class="login-form normal-font" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
+      <form name="form_login" class="form-signin normal-font" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
+        <h2 class="form-signin-heading">Please sign in</h2><br/><br/>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input input name="userName" type="text" id="userName" maxlength="20" class="form-control" placeholder="User Name" required autofocus>
+        <br/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input input name="passwd" type="password" id="password" maxlength="20" class="form-control" placeholder="Password" required>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <br/>
+        <br/>
         <table cellspacing="2">
-          <tr>
-            <td style="text-indent:1em;">Username:</td>            
-            <td><input name="userName" type="text" id="userName" maxlength="20"></td>
-          </tr>
-          <tr>
-             <td style="text-indent:1em;">Password:</td>
-             <td><input name="passwd" type="password" id="password" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
-            <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
-          </tr>
+            <tr>
+                <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
+                <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
+            </tr>
         </table>
-       <div class="mes" ><a href="regist.jsp">Free registration&nbsp;&nbsp; </a><a href="/bonusPointsExchange/retrievePassword_1.jsp?method=forgetPasswd_user">Forgot password?</a></div>
+       <div class="mes" >
+         <a href="regist.jsp">Free registration&nbsp;&nbsp; </a>
+         <a href="/bonusPointsExchange/retrievePassword_1.jsp?method=forgetPasswd_user">Forgot password?</a></div>
        <input type="hidden" name="actionCode" value="log"/>
        <input type="hidden" name="methodCode" value="login"/>
       </form>
     </div>
   </div>
+  
 <!--这是bottom-->
 	<%@ include file="footer.jsp" %>
 </body>
