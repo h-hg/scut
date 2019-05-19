@@ -26,4 +26,15 @@ My account -> submit -> Newly released
 ![nav_catalog1](./image/nav_catalog1.png)
 ![nav_catalog2](./image/nav_catalog2.png)
 # order.png
-![order.png](./image/order.png)
+![order](./image/order.png)
+# regist_shop.jsp
+![regist_shop](./image/regist_shop.png)
+# recommend.jsp
+![recommend](./image/recommend.png)
+# personalv1.0
+![personalv1.0](./image/personalv1.0_1.png)
+![personalv1.0](./image/personalv1.0_2.png)
+![personalv1.0](./image/personalv1.0_3.png)
+![personalv1.0](./image/personalv1.0_4.png)
+# reference.jsp
+![reference](./image/reference.png)
