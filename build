@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rm -f bonusPointsExchange.war
+cd bonusPointsExchange
+jar -cvf bonusPointsExchange.war * 
+mv bonusPointsExchange.war ../bonusPointsExchange.war
+
+cd ..
+docker rm -f bonus
+
+docker rmi -f scut_bonuswar scut_bonus_war
+
+docker-compose up -d
+
+cd ..
+

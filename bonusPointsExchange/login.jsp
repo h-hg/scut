@@ -47,6 +47,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 <link href="<%=basePath%>css/footer.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+<script src="dist/jquery-3.4.1.min.js"></script>
+<script src="dist/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 //表单验证
@@ -68,7 +71,9 @@ function checkForm() {
 </head>
 <body>
 <!--这是top-->
-	<%@ include file="header.jsp" %>
+  <%@ include file="header.jsp" %>
+  <br/>
+  <br/>
 <!--
 <div class="header">
   <div class="span1">

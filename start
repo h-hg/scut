@@ -27,7 +27,6 @@ echo
 
 
     }
-sudo zypper install java
 
 cleanup
 
