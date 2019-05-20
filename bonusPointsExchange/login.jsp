@@ -88,6 +88,7 @@ function checkForm() {
         <label for="userName" class="sr-only">Username</label>
         <input name="userName" type="text" id="userName" maxlength="20" class="form-control" placeholder="User Name" required autofocus>
         <br/>
+        <br/>
         <label for="password" class="sr-only">Password</label>
         <input name="passwd" type="password" id="password" maxlength="20" class="form-control" placeholder="Password" required>
         <br/>
