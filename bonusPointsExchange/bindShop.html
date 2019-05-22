@@ -23,30 +23,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
   <script src="dist/jquery-3.4.1.min.js"></script>
   <script src="dist/bootstrap.min.js"></script>
-  <sytle>
-
-  </sytle>>
-
 </head>
 
 <body>
   <!--这是top-->
   <%@ include file="header.jsp" %>
   <!--这是main_page-->
-  <div class="container" style="width:300px">
+  <div class="container">
     <!--  <p class="title">bind to the merchant&nbsp;&nbsp;<span class="form-signin">BIND SHOP</span></p> -->
-    <form class="form-signin" action="/bonusPointsExchange/BindShopServlet" method="post"
-      onsubmit="return checkForm();">
-      <h2 class="form-signin-heading">bind merchant</h2>
+    <form class="form-signin" action="/bonusPointsExchange/BindShopServlet" method="post" onsubmit="return checkForm();" style="max-width:330px;padding:15px;margin:0 auto;">
+      <h2 class="form-signin-heading" sytle = "margin-bottom:10px;">bind merchant</h2>
       <label for="ShopName" class="sr-only">ShopName</label>
       <input name="ShopName" type="text" id="ShopName" class="form-control" value="<%=shopName %>" placeholder="ShopName" readonly>
 
       <label for="userName" class="sr-only">userName</label>
-      <input name="userName" type="text" id="userName" class="form-control"placeholder="userName"
-        required autofocus>
+      <input name="userName" type="text" id="userName" class="form-control" placeholder="userName" required autofocus>
 
       <label for="password" class="sr-only">password</label>
-      <input name="password" type="password" id="password" class="form-control"placeholder="Password"
+      <input name="password" type="password" id="password" class="form-control" placeholder="Password"
         required>
       </br>
       <!-- 下面还没有改好 -->
@@ -62,11 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <!--这是bottom-->
   <%@ include file="footer.jsp" %>
-  <footer class="footer">
-    <div class="container">
-        <p class="text-muted">Copyright (C) 2015-2016 Bonus exchange platform</p>
-    </div>
-</footer>
 </body>
 
 
