@@ -22,29 +22,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/personal.css">
 <link href="css/footer.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+<script src="dist/jquery-3.4.1.min.js"></script>
+<script src="dist/bootstrap.min.js"></script>
 </head>
 
 <body>
 <!--这是top-->
-	<%@ include file="header.jsp" %>
+  <%@ include file="header.jsp" %>
+  <br/>
+  <br/>
 <!--这是main_page-->
-<div class="main">
+<div class="login-frame">
   <div class="bind-form">
     <p class="title">bind to the merchant&nbsp;&nbsp;<span class="title1">BIND SHOP</span></p>
     <form action="/bonusPointsExchange/BindShopServlet" method="post" onsubmit="return checkForm();">
+      <label for="ShopName" class="sr-only">ShopName</label>
+      <input name="ShopName" type="text" id="ShopName" value="<%=shopName %>" placeholder="ShopName" class="form-control" readonly>
+      
+      <label for="userName" class="sr-only">userName</label>
+      <input name="userName" type="text" id="userName" class="form-control" placeholder="userName" required autofocus>
+      
+      <label for="password" class="sr-only">password</label>
+      <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+      <button class="btn btn-lg btn-primary btn-block" type="reset" id="submit">Reset</button>
+      <!-- 下面原来页面的两个按钮 -->
       <table cellspacing="2">
-        <tr>
-          <td>merchant's name</td>
-          <td><input name="ShopName" type="text" id="ShopName" class="no-border" value="<%=shopName %>" maxlength="20" readonly ></td>
-        </tr>
-        <tr>
-          <td>username:</td>
-          <td><input name="userName" type="text" id="userName" maxlength="20"></td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input name="password" type="password" id="password" maxlength="20"></td>
-        </tr>
         <tr>
           <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
           <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>

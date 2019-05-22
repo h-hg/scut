@@ -92,10 +92,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta charset="utf-8">
 <title>Personal center</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 <link href="css/footer.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/personal.css">
+<!--<link rel="stylesheet" type="text/css" href="css/personal.css">-->
+<%@ include file="link.jsp" %>
 </head>
+
+
 <body>
 <!--这是top-->
 	<%@ include file="header.jsp" %>
