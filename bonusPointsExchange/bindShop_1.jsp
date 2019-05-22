@@ -64,7 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <script type="text/javascript">
-//h-hg 避免账号名和密码为空
 function checkForm() {
 	// alert("ada");
 	var userName = document.getElementById("userName").value;
