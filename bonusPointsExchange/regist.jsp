@@ -87,57 +87,46 @@ function checkEmail(email) {
 <body>
 	<%@ include file="header.jsp" %>
 <!--header -->
-<div class="regist-frame">
-  <p class="title">&nbsp;&nbsp;User registration&nbsp;&nbsp;<span class="title1">USER REGISTER</span><span class="title1 right"><a href="regist_shop.jsp">Go to the merchant registration</a>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-  <div>
-    <div class="span5">
-      <form name="form_regist" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
-        <table>
-          <tr>
-            <td>Account:</td>
-            <td><input name="userName" type="text" id="userName" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td><input name="passwd" type="password" id="password" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td>Password again:</td>
-            <td><input name="repassword" type="password" id="repassword" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td>E-mail:</td>
-            <td><input name="email" type="text" id="email" maxlength="40"></td>
-          </tr>
-          <tr>
-            <td>Fullname:</td>
-            <td><input name="fullName" type="text" id="fullName" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td>Tel:</td>
-            <td><input name="phone" type="text" id="phone" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
-            <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
-          </tr>
-        </table>
-        <input type="hidden" name="actionCode" value="regist">
-       
-      </form>
-    </div>
-    <div class="span6">
-      <div class="tips">
-        <p class="tips-font1">Register and enjoy</p>
-        Free exchange of Bonus
-        <br/><br/>
-        <p class="tips-font1">Already have an account?</p>
-       Sign in now to experience points trading! <a href="login.jsp">Log in Now </a></div>
-    </div>
-  </div>
+<div class = "container">
+		<form name="form_regist" action="/bonusPointsExchange/actionServlet" method="post"
+				onsubmit="return checkForm();" style="max-width:330px;padding:15px;margin:0 auto;">
+				<h2 class="form-signin-heading" sytle = "margin-bottom:10px;">User Registration</h2>
+				</br>
+				<p>
+						<span style="float:left">
+								<a href="regist_shop.jsp">Merchant Registration</a>
+						</span>
+						<span style="float:right">
+								<a href="login.jsp">Log in Now</a>
+						</span>
+				</p>
+
+				<label for="userName" class="sr-only">userName</label>
+				<input name="userName" type="text" id="userName" class="form-control" placeholder="User Name" required autofocus>
+				</br>
+				<label for="password" class="sr-only">password</label>
+				<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+				</br>
+				<label for="repassword" class="sr-only">Repassword</label>
+				<input name="repassword" type="password" id="repassword" class="form-control" placeholder="Repassword" required>
+				</br>
+				<label for="email" class="sr-only">Email address</label>
+				<input name="email" type="text" id="email" class="form-control" placeholder="Email address" required>
+				</br>
+				<label for="fullName" class="sr-only">fullName</label>
+				<input name="fullName" type="text" id="fullName" class="form-control" placeholder="Full Name" required>
+				</br>
+				<label for="phone" class="sr-only">phone</label>
+				<input name="phone" type="text" id="phone" class="form-control" placeholder="phone" required>
+				</br>
+				<!-- 下面还没有改好 -->
+				<button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+				</br>
+				<input type="hidden" name="actionCode" value="regist" class="form-control">
+		</form>
 </div>
 
 <!--footer -->
-	<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

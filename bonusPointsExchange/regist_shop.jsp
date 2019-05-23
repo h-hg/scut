@@ -10,60 +10,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="utf-8">
 <title>Merchant registration</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link href="css/footer.css" rel="stylesheet" type="text/css">
 <link href="css/regist.css" rel="stylesheet" type="text/css">
+<%@ include file="link.jsp" %>
 </head>
 
 <body>
 	<%@ include file="header.jsp" %>
 <!--header -->
-<div class="regist-frame">
-<p class="title">&nbsp;&nbsp;Merchant registration&nbsp;&nbsp;<span class="title1">USER REGISTER</span><span class="title1 right"><a href="regist.jsp">Go to user registration&nbsp;&nbsp;&nbsp;&nbsp;</a></span></p>
-  <div>
-    <div class="span5">
-      <form onsubmit="return checkForm();" method="post" action="/bonusPointsExchange/RegistShopServlet">
-        <table>
-          <tr>
-            <td>Merchant name:</td>
-            <td><input name="shopName" type="text" id="shopName" maxlength="20"  onblur="checkShopName();"></td>
-            <td><span id="hint" style="color:#FF0000; font-size:12px;" >&nbsp;&nbsp;&nbsp;</span></td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td><input name="password" type="password" id="password" maxlength="20"></td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>Confirm password:</td>
-            <td><input name="repassword" type="password" id="repassword" maxlength="20"></td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>E-mail:</td>
-            <td><input name="email" type="text" id="email" maxlength="40"></td>
-            <td><span id="hint" style="color:#FF0000">&nbsp;</span></td>
-          </tr>
-          <tr>
-            <td>Merchant record number:</td>
-            <td><input name="number" type="text" id="number" maxlength="40"></td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
-            <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
-          </tr>
-        </table>
-      </form>
-    </div>
-    <div class="span6">
-      <div class="tips">
-        <p class="tips-font1">Register and enjoy</p>
-        View merchant bonus transactions
-        <br/><br/>
-        <p class="tips-font1">Already have an account?</p>
-        Sign in now to trade bonus. <a href="login_shop.jsp"> Sign in to your Merchant now </a></div>
-    </div>
-  </div>
+<div class="container">
+		<form onsubmit="return checkForm();" method="post" action="/bonusPointsExchange/RegistShopServlet"
+				style="max-width:330px;padding:15px;margin:0 auto;">
+
+				<h2 class="form-signin-heading" sytle="margin-bottom:10px;">Merchant Registration</h2>
+				</br>
+				<p>
+						<span style="float:left">
+								<a href="regist.jsp">User Registration</a>
+						</span>
+						<span style="float:right">
+								<a href="login_shop.jsp">Log in Now</a>
+						</span>
+				</p>
+
+				<label for="shopName" class="sr-only">Merchant name</label>
+				<input name="shopName" type="text" id="shopName" class="form-control" placeholder="User Name" required
+						autofocus>
+				</br>
+				<label for="password" class="sr-only">password</label>
+				<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+				</br>
+				<label for="repassword" class="sr-only">Repassword</label>
+				<input name="repassword" type="password" id="repassword" class="form-control" placeholder="Repassword"
+						required>
+				</br>
+				<label for="email" class="sr-only">Email address</label>
+				<input name="email" type="text" id="email" class="form-control" placeholder="Email address" required>
+				</br>
+				<label for="number" class="sr-only">Merchant record number</label>
+				<input name="number" type="text" id="number" class="form-control" placeholder="Merchant Record Number"
+						required>
+				</br>
+				<!-- 下面还没有改好 -->
+				<button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+		</form>
 </div>
 
 <!--footer -->
