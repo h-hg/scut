@@ -1,0 +1,63 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+  }
+  
+  .form-left {
+    max-width: 450px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .form-left .form-left-heading {
+    margin-bottom: 10px;
+  }
+  .form-left .form-control {
+     position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-left .form-control:focus {
+    z-index: 2;
+  }
+  .form-left input[type="text"] {
+    margin-bottom:-1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-left input[type="password"] {
+    margin-bottom:-1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-left input[type="text"] {
+    margin-bottom:-1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-left input[type="email"] {
+    margin-bottom:-1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-left input[type="number"] {
+    margin-bottom:-1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+
+/* Sidebar modules for boxing content */
+ .sidebar-module {
+     padding: 15px;
+     margin: 0 -15px 15px;
+ }
+
+
+ #div2,#div3,#div4,#div5,#div6{
+	display:none;
+	}

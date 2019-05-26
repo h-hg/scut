@@ -67,7 +67,6 @@ if(userName == null && shopName == null) { %>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css" >
 <link rel="stylesheet" type="text/css" href="css/order.css">
-<%@ include file="link.jsp" %>
 </head>
 
 <body>

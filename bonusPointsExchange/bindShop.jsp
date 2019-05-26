@@ -16,87 +16,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Bind to the merchant</title>
-<!--
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link href="css/footer.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/login.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/personal.css">-->
-<link href="css/footer.css" rel="stylesheet" type="text/css">
-<%@ include file="link.jsp" %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bind to the Merchant</title>
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dist/css/custom_sytle/login.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-<!--这是top-->
-  <%@ include file="header.jsp" %>
-  <div></div>
-<!--这是main_page-->
-<div class="login-frame">
-  <div class="bind-form">
-    <p class="title">bind to the merchant&nbsp;&nbsp;<span class="title1">BIND SHOP</span></p>
-      <div class="span4">
-				<form name="form_login" class="form-signin normal-font" action="/bonusPointsExchange/BindShopServlet" method="post" onsubmit="return checkForm();">
-          <h2 class="form-signin-heading">merchant's name</h2>
-          <input name="ShopName" type="text" id="ShopName" class="no-border" value="<%=shopName %>" maxlength="20" readonly >
-          <br/>
-					<label for="userName" class="sr-only">username: </label>
-					<input input name="userName" type="text" id="userName" maxlength="20" class="form-control" placeholder="User Name" required autofocus>
-					<label for="password" class="sr-only">Password: </label>
-					<input input name="password" type="password" id="password" maxlength="20" class="form-control" placeholder="Password" required>
-					<br/>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-					<button class="btn btn-lg btn-primary btn-block" type="reset" id="reset" value="Reset">Reset</button>
-					<br/>
-					<br/>
-      </form>
+    <!--这是top-->
+    <%@ include file="header.jsp" %>
+    <!--这是main_page-->
+    <div class="container">
+        <form class="form-signin" action="/bonusPointsExchange/BindShopServlet" method="post" onsubmit="return checkForm();">
+            <h2 class="form-signin-heading">Bind to the Merchant</h2>
+            <label for="ShopName" class="sr-only">ShopName</label>
+            <input name="ShopName" type="text" id="ShopName" class="form-control" value="<%=shopName %>" placeholder="Shop Name" readonly>
+            <label for="userName" class="sr-only">userName</label>
+            <input name="userName" type="text" id="userName" class="form-control" placeholder="User Name" required autofocus>     
+            <label for="password" class="sr-only">password</label>
+            <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+            <button name="submit" class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Bind</button>
+        </form>
     </div>
-    <!--
-      <table cellspacing="2">
-        <tr>
-          <td>merchant's name</td>
-          <td><input name="ShopName" type="text" id="ShopName" class="no-border" value="<%=shopName %>" maxlength="20" readonly ></td>
-        </tr>
-        <tr>
-          <td>username:</td>
-          <td><input name="userName" type="text" id="userName" maxlength="20"></td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input name="password" type="password" id="password" maxlength="20"></td>
-        </tr>
-        <tr>
-          <td class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
-          <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
-        </tr>
-      </table>
-    -->
-  </div>
-</div>
-<!--这是bottom-->
-	<%@ include file="footer.jsp" %>
+
+    <%@ include file="footer.jsp" %>
 </body>
 
 
 <script type="text/javascript">
-//h-hg 避免账号名和密码为空
-function checkForm() {
-	// alert("ada");
-	var userName = document.getElementById("userName").value;
-	if (userName == "") {
-		alert("Sorry,&nbsp;Username cannot be empty.");
-		return false;
-	}
-	
-	var password = document.getElementById("password").value;
-	if (password == "") {
-		alert("Sorry,&nbsp;Password cannot be empty");
-		return false;
-	}
-}	
+    function checkForm() {
+        // alert("ada");
+        var userName = document.getElementById("userName").value;
+        if (userName == "") {
+            alert("Sorry,&nbsp;Username cannot be empty.");
+            return false;
+        }
+
+        var password = document.getElementById("password").value;
+        if (password == "") {
+            alert("Sorry,&nbsp;Password cannot be empty");
+            return false;
+        }
+    }	
 </script>
+
 </html>
-
-

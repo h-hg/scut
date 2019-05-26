@@ -73,8 +73,7 @@ if(uploadTypeErr == "N") {%>
 </style>
 <meta charset="utf-8">
 <title>Merchant Center</title>
-<!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
-<%@ include file="link.jsp" %>
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <link href="css/footer.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/personal.css">
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">

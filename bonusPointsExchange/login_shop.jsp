@@ -8,101 +8,107 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	String shopChangePwdResult = (String)request.getAttribute("shopChangePwdResult");  //获取修改商家mima是否成功
 	if(shopChangePwdResult == "Y") {
 %>
-	<script type="text/javascript" language="javascript">
-		alert("Password is changed.Login again please!");   
-	</script>	
+<script type="text/javascript" language="javascript">
+    alert("Password is changed.Login again please!");   
+</script>
 <% } %>
 
 <%
 	String registRes = (String)request.getAttribute("registRes");  //获取商家注册是否成功
 	if(registRes == "Y") {
 %>
-	<script type="text/javascript" language="javascript">
-		alert("Registration succeeded.Log in please!");                            
-	</script>	
+<script type="text/javascript" language="javascript">
+    alert("Registration succeeded.Log in please!");                            
+</script>
 <% } %>
 <%
 	String resetPasswdMeg =  (String)request.getAttribute("resetPasswdMeg");//忘记密码重置密码
 	if(resetPasswdMeg == "success") {
 %>
-	<script type="text/javascript" language="javascript">
-		alert("Resetting password succeeded.Log in again please!");                            
-	</script>	
+<script type="text/javascript" language="javascript">
+    alert("Resetting password succeeded.Log in again please!");                            
+</script>
 <% } %>
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link href="css/footer.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/login.css">
-<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
-<script src="dist/jquery-3.4.1.min.js"></script>
-<script src="dist/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Login</title>
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dist/css/custom_sytle/login.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
+
 <body>
-<!--这是top-->
-	<%@ include file="header.jsp" %>
-	<br/>
-	<br/>
-<!--这是main_page-->
-  <div class="login-frame">
-    <div>
-      <p class="title">&nbsp;&nbsp;Merchant login&nbsp;&nbsp;<span class="title1">SHOP LOGIN</span><span class="title1 right"><a href="login.jsp">Login as a user</a>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-		</div>
-		<!--
-    <div class="span3">
-      <div class="ad"> <img src="images/ad3.jpg" alt="Advertisement"/> </div>
-		</div>
-	-->
-    <div class="span4">
-				<form name="form_login" class="form-signin normal-font" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
-					<h2 class="form-signin-heading">Please sign in</h2><br/>
-					<label for="userName" class="sr-only">Account: </label>
-					<input input name="userName" type="text" id="userName" maxlength="20" class="form-control" placeholder="User Name" required autofocus>
-					<label for="password" class="sr-only">Password</label>
-					<input input name="password" type="password" id="password" maxlength="20" class="form-control" placeholder="Password" required>
-					<br/>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-					<button class="btn btn-lg btn-primary btn-block" type="reset" id="reset" value="Reset">Reset</button>
-					<br/>
-					<br/>
-        <table cellspacing="2">
-          <tr>
-            <td class="mid"><input name="submit" type="submit" clafss="submitBtn" id="submit" value="Submit"></td>
-            <td class="mid"><input name="reset" type="reset" class="submitBtn" id="reset" value="Reset"></td>
-          </tr>
-        </table>
-        <div class="mes"><a href="regist_shop.jsp">Free registration&nbsp;&nbsp; </a><a href="/bonusPointsExchange/retrievePassword_1.jsp?method=forgetPasswd_shop">Forgot Password?</a></div>
-      </form>
+    <!--这是top-->
+    <%@ include file="header.jsp" %>
+    <!--这是main_page-->
+    <div class="container">
+        <form class="form-signin" action="/bonusPointsExchange/ShopLoginServlet" method="post"
+            onsubmit="return checkForm();">
+            <h2 class="form-signin-heading">Login as Merchant</h2>
+            <p>
+                <span style="float:right">
+                    <a href="login.jsp">Login as User</a>
+                </span>
+            </p>
+            <label for="userName" class="sr-only">Merchant Name</label>
+            <input name="userName" type="text" id="userName" class="form-control" placeholder="Merchant Name" required
+                autofocus>
+            <label for="password" class="sr-only">Password</label>
+            <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+            <button id="submit" name="submit" class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+            </br>
+            <p>
+                <span style="float:left">
+                    <a href="regist_shop.jsp">Free Registration</a>
+                </span>
+                <span style="float:right">
+                    <a href="/bonusPointsExchange/retrievePassword_1.jsp?method=forgetPasswd_shop">Forgot Password</a>
+                </span>
+            </p>
+        </form>
     </div>
-  </div>
+    <!--这是bottom-->
+    <%@ include file="footer.jsp" %>
 
-<!--这是bottom-->
-	<%@ include file="footer.jsp" %>
+    <script type="text/javascript">
 
-<script type="text/javascript">
+        //表单验证
+        function checkForm() {
+            // alert("ada");
+            var userName = document.getElementById("userName").value;
+            if (userName == "") {
+                alert("Sorry,Username cannot be empty!");
+                return false;
+            }
 
-//表单验证
-function checkForm() {
-	// alert("ada");
-	var userName = document.getElementById("userName").value;
-	if (userName == "") {
-		alert("Sorry,Username cannot be empty!");
-		return false;
-	}
-	
-	var password = document.getElementById("password").value;
-	if (password == "") {
-		alert("Sorry,Password cannot be empty.");
-		return false;
-	}
-}
-</script>
+            var password = document.getElementById("password").value;
+            if (password == "") {
+                alert("Sorry,Password cannot be empty.");
+                return false;
+            }
+        }
+    </script>
 </body>
+
 </html>
-
-
-

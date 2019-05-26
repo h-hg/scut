@@ -11,7 +11,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img style="position: center;" src="images/scut6.png" width="185px" height="42px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img style="position: center;" src="images/scut.png" width="185px" height="42px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <!--<a class="navbar-brand" href="#">Project name</a>-->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -47,4 +47,5 @@
 </div>
 
 
-<br/><br/>
+<br/>
+<br/>

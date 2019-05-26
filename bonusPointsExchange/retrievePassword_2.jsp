@@ -6,79 +6,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <% String userName =request.getParameter("userName");
 	userName= new String(userName.getBytes("ISO-8859-1"),"utf-8");
 
-	%> 
+	%>
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Forgot Password</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link href="css/footer.css" rel="stylesheet" type="text/css">
-<link href="css/regist.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-//表单验证
-function checkForm() {
-	// alert("ada");
-	var userName = document.getElementById("userName").value;
-	if (userName == "" || userName == null) {
-		alert("UserName cannot be empty");
-		return false;
-	}
-	
-	var password = document.getElementById("password").value;
-	if (password == "") {
-		alert("Password cannnot be empty");
-		return false;
-	}
-	
-	var repassword = document.getElementById("repassword").value;
-	if (repassword == "") {
-		alert("Confirm password cannot be empty");
-		return false;
-	}
-	if(password != repassword){
-	    alert("The password input is inconsistent twice!");
-	    return false;
-	}
-}
-</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Forgot Password</title>
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dist/css/custom_sytle/regist.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        //表单验证
+        function checkForm() {
+            // alert("ada");
+            var userName = document.getElementById("userName").value;
+            if (userName == "" || userName == null) {
+                alert("UserName cannot be empty");
+                return false;
+            }
+
+            var password = document.getElementById("password").value;
+            if (password == "") {
+                alert("Password cannnot be empty");
+                return false;
+            }
+
+            var repassword = document.getElementById("repassword").value;
+            if (repassword == "") {
+                alert("Confirm password cannot be empty");
+                return false;
+            }
+            if (password != repassword) {
+                alert("The password input is inconsistent twice!");
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
-<!--header -->
-	<%@ include file="header.jsp" %>
-<!--header -->
-<div class="repsw-form">
-<div class="retrieve">
-  <p class="title">Retrieve password&nbsp;&nbsp;&nbsp;&nbsp;<span class="title1">RETRIEVE PASSWORD</span> <span class="title1 right"><a href="login.jsp">Log in now</a>&nbsp;&nbsp;&nbsp;</span></p>
-   <div><span id="step-title1" style="color:grey;">STEP1:safety verification</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="step-title2" style="color:blue;">STEP2:Reset password</span></div>
-      <div id="step2">
-      <form action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
-      <table>
-      	  <tr>
-      	    <td>Account:</td>
-            <td><input name="userName" type="userName" id="userName" value="<%=userName %>" maxlength="20"></td>
-          </tr>	
-          <tr>
-            <td>New password</td>
-            <td><input name="newPassword" type="password" id="password" maxlength="20"></td>
-          </tr>
-          <tr>
-            <td>Password again:</td>
-            <td><input name="rePassword" type="password" id="repassword" maxlength="20"></td>
-          </tr> 
-          <tr>
-            <td colspan="2" class="mid"><input name="submit" type="submit" class="submitBtn" id="submit" value="Submit"></td>
-          </tr>
-        </table>
-        <input type="hidden" name="actionCode" value="resetPasswd">
-        <input type="hidden" name="methodCode" value=<%=request.getParameter("method") %>>
+    <!--header -->
+    <%@ include file="header.jsp" %>
+    <!--header -->
+    <div class = "container">
+        <form class="form-regist" action="/bonusPointsExchange/actionServlet" method="post" onsubmit="return checkForm();">
+            <h2 class="form-regist-heading">Retrieve Pssword</h2>
+            <p>
+                <span style="float:right">
+                        <a href="login.jsp">Login Now</a>
+                </span>
+            </p>
+            <label for="userName" class="sr-only">Account Name</label>
+            <input name="userName" type="text" id="userName" class="form-control" value="<%=userName %>">
+            <label for="password" class="sr-only">New Password</label>
+            <input name="newPassword" type="password" id="password" class="form-control" placeholder="New Password" required>
+            <label for="rePassword" class="sr-only">Password Again</label>
+            <input name="rePassword" type="password" id="repassword" class="form-control" placeholder="Password Again" required>
+            </br>
+            <!-- 下面还没有改好 -->
+            <button name="submit" class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+            <input type="hidden" name="actionCode" value="resetPasswd">
+            <input type="hidden" name="methodCode" value=<%=request.getParameter("method") %>>
         </form>
-      </div>
     </div>
-</div>
-</
-<!--footer -->
-	<%@ include file="footer.jsp" %>
+    </ <!--footer -->
+    <%@ include file="footer.jsp" %>
 </body>
+
 </html>
